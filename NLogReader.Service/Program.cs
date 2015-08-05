@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceProcess;
 
 namespace NLogReader.Service
 {
@@ -17,7 +12,7 @@ namespace NLogReader.Service
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 
-                new Service1() 
+                new LogReaderService() 
             };
             ServiceBase.Run(ServicesToRun);
         }

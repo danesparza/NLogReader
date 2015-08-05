@@ -1,6 +1,6 @@
 ﻿namespace NLogReader.Service
 {
-    partial class Service1
+    partial class LogReaderService
     {
         /// <summary> 
         /// Required designer variable.

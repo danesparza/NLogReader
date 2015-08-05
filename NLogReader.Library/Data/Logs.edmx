@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Application_LogsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="system_logging">
+          <Key>
+            <PropertyRef Name="system_logging_guid" />
+          </Key>
+          <Property Name="system_logging_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="entered_date" Type="datetime" />
+          <Property Name="log_application" Type="varchar" MaxLength="200" />
+          <Property Name="log_date" Type="varchar" MaxLength="100" />
+          <Property Name="log_level" Type="varchar" MaxLength="100" />
+          <Property Name="log_logger" Type="varchar" MaxLength="8000" />
+          <Property Name="log_message" Type="varchar" MaxLength="8000" />
+          <Property Name="log_machine_name" Type="varchar" MaxLength="8000" />
+          <Property Name="log_user_name" Type="varchar" MaxLength="8000" />
+          <Property Name="log_call_site" Type="varchar" MaxLength="8000" />
+          <Property Name="log_thread" Type="varchar" MaxLength="100" />
+          <Property Name="log_exception" Type="varchar" MaxLength="8000" />
+          <Property Name="log_stacktrace" Type="varchar" MaxLength="8000" />
+          <Property Name="aspnet_sessionid" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="Application_LogsModelStoreContainer">
+          <EntitySet Name="system_logging" EntityType="Self.system_logging" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Application_LogsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="system_logging">
+          <Key>
+            <PropertyRef Name="system_logging_guid" />
+          </Key>
+          <Property Name="system_logging_guid" Type="Guid" Nullable="false" />
+          <Property Name="entered_date" Type="DateTime" Precision="3" />
+          <Property Name="log_application" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="log_date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="log_level" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="log_logger" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="log_message" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="log_machine_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="log_user_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="log_call_site" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="log_thread" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="log_exception" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="log_stacktrace" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="aspnet_sessionid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Application_LogsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="system_logging" EntityType="Self.system_logging" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Application_LogsModelStoreContainer" CdmEntityContainer="Application_LogsEntities">
+          <EntitySetMapping Name="system_logging">
+            <EntityTypeMapping TypeName="Application_LogsModel.system_logging">
+              <MappingFragment StoreEntitySet="system_logging">
+                <ScalarProperty Name="system_logging_guid" ColumnName="system_logging_guid" />
+                <ScalarProperty Name="entered_date" ColumnName="entered_date" />
+                <ScalarProperty Name="log_application" ColumnName="log_application" />
+                <ScalarProperty Name="log_date" ColumnName="log_date" />
+                <ScalarProperty Name="log_level" ColumnName="log_level" />
+                <ScalarProperty Name="log_logger" ColumnName="log_logger" />
+                <ScalarProperty Name="log_message" ColumnName="log_message" />
+                <ScalarProperty Name="log_machine_name" ColumnName="log_machine_name" />
+                <ScalarProperty Name="log_user_name" ColumnName="log_user_name" />
+                <ScalarProperty Name="log_call_site" ColumnName="log_call_site" />
+                <ScalarProperty Name="log_thread" ColumnName="log_thread" />
+                <ScalarProperty Name="log_exception" ColumnName="log_exception" />
+                <ScalarProperty Name="log_stacktrace" ColumnName="log_stacktrace" />
+                <ScalarProperty Name="aspnet_sessionid" ColumnName="aspnet_sessionid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
