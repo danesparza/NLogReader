@@ -1,0 +1,38 @@
+{
+  "name": "nlogreader",
+  "version": "0.0.1",
+  "description": "NLog reader",
+  "main": "js/app.js",
+  "dependencies": {
+    "flux": "^2.0.0",
+    "keymirror": "~0.1.0",
+    "object-assign": "^1.0.0",
+    "react": "^0.13.0",
+    "director": "^1.2.7",
+    "moment": "^2.9.0",
+    "cookies-js": "^1.0.0",
+    "react-bootstrap-daterangepicker": "^0.2.5",
+    "nprogress": "^0.2.0",
+    "react-datagrid": "^1.1.13",
+    "getconfig": "^2.1.0",
+    "immutable": "^3.7.3"
+  },
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "envify": "^3.0.0",
+    "reactify": "^0.15.2",
+    "uglify-js": "~2.4.15",
+    "watchify": "^2.1.1"
+  },
+  "scripts": {
+    "start": "watchify -o js/bundle.js -v -d js/app.js",
+    "build": "browserify js/app.js | uglifyjs -cm > js/bundle.js"
+  },
+  "author": "Dan Esparza",
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  }
+}

@@ -59,6 +59,33 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.js" />
+    <Content Include="css\app.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\daterangepicker-bs3.css" />
+    <Content Include="css\react-datagrid.css" />
+    <Content Include="index.html" />
+    <Content Include="js\actions\ConfigActions.js" />
+    <Content Include="js\actions\LogReaderActions.js" />
+    <Content Include="js\app.js" />
+    <Content Include="js\bundle.js" />
+    <Content Include="js\components\LogReaderApp.react.js" />
+    <Content Include="js\components\LogReaderResultItem.react.js" />
+    <Content Include="js\components\LogReaderResults.react.js" />
+    <Content Include="js\components\LogReaderResultsHeader.react.js" />
+    <Content Include="js\components\LogReaderToolbar.react.js" />
+    <Content Include="js\constants\LogReaderConstants.js" />
+    <Content Include="js\dispatcher\AppDispatcher.js" />
+    <Content Include="js\stores\ConfigStore.js" />
+    <Content Include="js\stores\LogStore.js" />
+    <Content Include="js\utils\ConfigUtils.js" />
+    <Content Include="js\utils\LogReaderAPIUtils.js" />
+    <Content Include="Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="package.json" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
