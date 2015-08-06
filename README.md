@@ -15,7 +15,7 @@ This service assumes you are already using [NLog](http://nlog-project.org/) for 
 Also, this service assumes you are logging to a database.  If you're not, just [run the included SQL script](https://github.com/danesparza/NLogReader/blob/master/sql/NLogReader.sql) in its own database and adjust your NLog configuration.
 
 ### Quick start
-Download, build and install the service
-Adjust the service configs to point to your database
-Adjust your app config to point to the service
-Run the app and search your log data!
+* Download, build and install the service
+* Adjust the service configs to point to your database
+* Adjust your app config to point to the service
+* Run the app and search your log data!
