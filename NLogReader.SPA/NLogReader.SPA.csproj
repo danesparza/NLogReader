@@ -62,7 +62,6 @@
   <ItemGroup>
     <Content Include="config.js" />
     <Content Include="css\app.css" />
-    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\daterangepicker-bs3.css" />
     <Content Include="css\react-datagrid.css" />
     <Content Include="index.html" />
