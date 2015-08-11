@@ -27,10 +27,15 @@ Also, this service assumes you are logging to a database.  If you're not, just [
 ### Making changes to the code
 
 #### The web app
-Prerequisites to work on the single page app: 
-* Make sure you have [node](https://nodejs.org/) installed (for npm). Installation is simple, and there are installers for every major platform.  
-* On windows, it helps to have the [Msysgit (Git for windows)](https://msysgit.github.io/) client installed -- mostly because of the awesome bash-like command line prompt that it gives you.
-* [Fork the repo](https://help.github.com/articles/fork-a-repo/) and [clone to your local dev box](https://help.github.com/articles/fetching-a-remote/).  
-* Navigate to the directory of the web application and run `npm install` from the command line.  (Use msysgit if you have it installed).  If you don't see any errors (and instead see a stream of stuff that got downloaded) you should be ready to go!
+The web app is a React/Flux single page app.  Configuration is in config.js
 
+Watching for changes and automatically rebuilding bundle.js:
+```
+npm start
+```
+
+Building a release version of the bundle.js
+```
+npm run build
+```
 
