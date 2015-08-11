@@ -5,8 +5,8 @@ NLog dashboard for centralized loggging, searching and filtering
 
 ### What is it?
 NLogReader is: 
-* a JSON based API service to access your log data
 * a single-page application to filter and display your log data.  
+* a JSON based API service to access your log data
 
 It's designed to be fast, pretty, and easy-to-use.
 
