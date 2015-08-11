@@ -1,8 +1,5 @@
 var React = require('react');
 
-//  Grid component
-var Griddle = require('griddle-react');
-
 //  The components
 var LogReaderToolbar = require('./LogReaderToolbar.react');
 var LogReaderResults = require('./LogReaderResults.react');
