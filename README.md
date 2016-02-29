@@ -1,11 +1,9 @@
-# NLogReader
+# NLogReader [![Build status](https://ci.appveyor.com/api/projects/status/6wrcxho3c6rssgsc?svg=true)](https://ci.appveyor.com/project/danesparza/nlogreader)
 NLog dashboard for centralized loggging, searching and filtering
 
 Screenshot: 
 
 ![Dashboard screenshot](NLogReader.png?raw=true)
-
-[![Build status](https://ci.appveyor.com/api/projects/status/6wrcxho3c6rssgsc?svg=true)](https://ci.appveyor.com/project/danesparza/nlogreader)
 
 ### What is it?
 NLogReader is: 
