@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("NLogReader.Library.Tests")]
-[assembly: AssemblyCopyright("Copyright © Dan Esparza 2015")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e0c38918-5465-4e2d-9fd4-2549fce68925")]
+[assembly: Guid("6cc4d233-02e4-45c1-af74-2241dcb16441")]
 
 // Version information for an assembly consists of the following four values:
 //
