@@ -80,5 +80,16 @@ namespace NLogReader.Library
 
             return result;
         }
+
+        public string[] GetAllApplications()
+        {
+            //  Our return result
+            string[] retval = new string[0];
+
+            //  Get our list of applications:
+
+
+            return retval;
+        }
     }
 }

@@ -129,7 +129,7 @@ var LogReaderToolbar = React.createClass({
     var params = {};
     params.StartDate = this.state.startDate.format('YYYY-MM-DD h:mma')
     params.EndDate = this.state.endDate.format('YYYY-MM-DD h:mma');
-    params.PageSize = 1000;
+    params.PageSize = 5000;
     params.Page = 0;
     params.baseurl = this.state.selectedEnvironment.url;
     LogReaderAPIUtils.getLogItems(params);

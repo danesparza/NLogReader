@@ -32,6 +32,11 @@ namespace NLogReader.Library
         public string SessionId { get; set; }
 
         /// <summary>
+        /// Filters results that include this log message expression
+        /// </summary>
+        public string LogMessage { get; set; }
+
+        /// <summary>
         /// The requested number of items per results page
         /// </summary>
         public int PageSize { get; set; }
