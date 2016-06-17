@@ -1,6 +1,5 @@
 import {Component} from 'react';
 import moment from 'moment';
-import SplitPane from 'react-split-pane';
 
 //  Grid component
 import DataGrid from 'react-datagrid';

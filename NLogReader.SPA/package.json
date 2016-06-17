@@ -19,8 +19,7 @@
     "react-bootstrap-modal": "^2.0.0",
     "react-datagrid": "^2.0.4",
     "react-dimensions": "^1.2.0",
-    "react-dom": "^0.14.8",
-    "react-split-pane": "^0.1.42"
+    "react-dom": "^0.14.8"
   },
   "devDependencies": {
     "browserify": "^6.2.0",
