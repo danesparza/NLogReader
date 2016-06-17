@@ -1,12 +1,9 @@
-var React = require('react');
-var moment = require('moment');
+import {Component} from 'react';
+import moment from 'moment';
 
-var LogReaderResultItem = React.createClass({
+class LogReaderResultItem extends Component {
     
-  /**
-   * @return {object}
-   */
-  render: function() {
+  render() {
 
     var log_message = this.props.item.log_message || "The selected log message will be displayed here";
 
@@ -19,6 +16,6 @@ var LogReaderResultItem = React.createClass({
   	);
   }
 
-});
+}
 
-module.exports = LogReaderResultItem;
+export default LogReaderResultItem

@@ -1,33 +1,20 @@
-var React = require('react');
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 window.React = React; // export for http://fb.me/react-devtools
 
-//  Flat iron director
-var director = require('director');
-
 //  Cookie manager
-var cookies = require('cookies-js');
+import cookies from 'cookies-js';
 
 //  The Actions
-var ConfigActions = require('./actions/ConfigActions');
+import ConfigActions from './actions/ConfigActions';
 
 //	The API utils
-var LogReaderAPIUtils = require('./utils/LogReaderAPIUtils');
-var ConfigUtils = require('./utils/ConfigUtils');
+import LogReaderAPIUtils from './utils/LogReaderAPIUtils';
+import ConfigUtils from './utils/ConfigUtils';
 
 //	The app component
-var LogReaderApp = require('./components/LogReaderApp.react');
-
-/*
-//  The actions
-var PageActions = require('./actions/PageActions');
-
-//  Router setup
-var router = director.Router({
-  '/': function () { PageActions.showHome(); },
-  '/settings': function () { PageActions.showSettings(); }
-});
-router.init('/');
-*/
+import LogReaderApp from './components/LogReaderApp.react';
 
 //  Application element
 var appElement = document.getElementById("logreaderdapp");
@@ -36,4 +23,4 @@ var appElement = document.getElementById("logreaderdapp");
 ConfigUtils.setConfig(appconfig);
 
 //	Start the app
-React.render(<LogReaderApp />, appElement);	
+ReactDOM.render(<LogReaderApp />, appElement);	

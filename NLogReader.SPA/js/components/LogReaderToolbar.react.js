@@ -1,47 +1,48 @@
-var React = require('react');
-var DateRangePicker = require('react-bootstrap-daterangepicker');
-var moment = require('moment');
+import {Component} from 'react';
+import DateRangePicker from 'react-bootstrap-daterangepicker';
+import moment from 'moment';
 
 //  The API utils
-var LogReaderAPIUtils = require('../utils/LogReaderAPIUtils');
+import LogReaderAPIUtils from '../utils/LogReaderAPIUtils';
 
 //  The actions
-var ConfigActions = require('../actions/ConfigActions');
+import ConfigActions from '../actions/ConfigActions';
 
 //  The stores
-var ConfigStore = require('../stores/ConfigStore');
+import ConfigStore from '../stores/ConfigStore';
 
-function getAppState()
-{
-  return{
-      selectedEnvironment: ConfigStore.getEnvironment()
-  };
-}
+class LogReaderToolbar extends Component {
 
-var LogReaderToolbar = React.createClass({
+  constructor(props) {
+    super(props);
 
-  getInitialState: function() {
-    return {
+    this.state = {
       startDate: moment().startOf('day'),
       endDate: moment(),
       selectedEnvironment: ConfigStore.getEnvironment()
     };
-  },
 
-  componentDidMount: function() {
+    //  Bind our event handlers:
+    this._dateRangeChange = this._dateRangeChange.bind(this);
+    this._envChange = this._envChange.bind(this);
+    this._searchClick = this._searchClick.bind(this);    
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentDidMount() {
     //  Add store listeners ... and notify ME of changes
     ConfigStore.addChangeListener(this._onChange);
-  },
+  }
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     //  Remove store listeners
     ConfigStore.removeChangeListener(this._onChange);
-  },
+  }
 
   /**
    * @return {object}
    */
-  render: function() {
+  render() {
 
     //  Date range
     var start = this.state.startDate.format('MM-DD-YYYY');
@@ -102,16 +103,16 @@ var LogReaderToolbar = React.createClass({
         </div>
       </nav>
   	);
-  },
+  }
 
-  _dateRangeChange: function (event, picker) {
+  _dateRangeChange(event, picker) {
     this.setState({
       startDate: picker.startDate,
       endDate: picker.endDate
     });
-  },
+  }
 
-  _envChange: function(e) {
+  _envChange(e) {
     
     //  Create the environment:
     var env = {};
@@ -120,9 +121,9 @@ var LogReaderToolbar = React.createClass({
 
     //  Set the current environment:
     ConfigActions.setCurrentEnvironment(env)
-  },
+  }
 
-  _searchClick: function(e) {
+  _searchClick(e) {
     e.preventDefault();
 
     //  Get the log items:
@@ -133,12 +134,14 @@ var LogReaderToolbar = React.createClass({
     params.Page = 0;
     params.baseurl = this.state.selectedEnvironment.url;
     LogReaderAPIUtils.getLogItems(params);
-  },
-
-  _onChange: function() {
-    this.setState(getAppState());
   }
 
-});
+  _onChange() {
+    this.setState({
+      selectedEnvironment: ConfigStore.getEnvironment()
+    });
+  }
 
-module.exports = LogReaderToolbar;
+}
+
+export default LogReaderToolbar;

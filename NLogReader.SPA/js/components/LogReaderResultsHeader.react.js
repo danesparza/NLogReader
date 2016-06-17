@@ -1,17 +1,16 @@
-var React = require('react');
+import {Component} from 'react';
 
 //  The API utils
-var LogReaderAPIUtils = require('../utils/LogReaderAPIUtils');
+import LogReaderAPIUtils from '../utils/LogReaderAPIUtils';
 
 //  The stores
-var LogStore = require('../stores/LogStore');
+import LogStore from '../stores/LogStore';
 
-/*
-  Get the current state
- */
-function getAppState()
-{
-  return{
+class LogReaderResultsHeader extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
       nextpagenumber: LogStore.getNextPageNumber(),
       pagesize: LogStore.getPageSize(),
       moreurl: LogStore.getMoreUrl(),
@@ -19,29 +18,27 @@ function getAppState()
       endDate: LogStore.getEndDate(),
       itemcount: LogStore.getItemCount(),
       totalcount: LogStore.getTotalCount()
-  };
-}
+    };
 
-var LogReaderResultsHeader = React.createClass({
+    //  Bind our event handlers:
+    this._moreClick = this._moreClick.bind(this);
+    this._onChange = this._onChange.bind(this);
+  }
 
-  getInitialState: function() {
-    return getAppState();
-  },
-
-  componentDidMount: function() {
+  componentDidMount() {
     //  Add store listeners ... and notify ME of changes
     LogStore.addChangeListener(this._onChange);
-  },
+  }
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     //  Remove store listeners
     LogStore.removeChangeListener(this._onChange);
-  },
+  }
 
   /**
    * @return {object}
    */
-  render: function() {
+  render() {
 
     //  If we have no items, don't display the header
     if(this.state.itemcount == 0)
@@ -65,9 +62,9 @@ var LogReaderResultsHeader = React.createClass({
       );   
     }
   	
-  }, 
+  }
 
-  _moreClick: function(e) {
+  _moreClick(e) {
     e.preventDefault();
 
     //  Get the log items:
@@ -78,12 +75,20 @@ var LogReaderResultsHeader = React.createClass({
     params.Page = this.state.nextpagenumber;
     params.baseurl = this.state.moreurl;
     LogReaderAPIUtils.getMoreLogItems(params);
-  },
-
-   _onChange: function() {
-    this.setState(getAppState());
   }
 
-});
+   _onChange() {
+    this.setState({
+      nextpagenumber: LogStore.getNextPageNumber(),
+      pagesize: LogStore.getPageSize(),
+      moreurl: LogStore.getMoreUrl(),
+      startDate: LogStore.getStartDate(),
+      endDate: LogStore.getEndDate(),
+      itemcount: LogStore.getItemCount(),
+      totalcount: LogStore.getTotalCount()
+    });
+  }
 
-module.exports = LogReaderResultsHeader;
+}
+
+export default LogReaderResultsHeader

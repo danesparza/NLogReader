@@ -1,46 +1,43 @@
-var React = require('react');
+import {Component} from 'react';
 
 //  The components
-var LogReaderToolbar = require('./LogReaderToolbar.react');
-var LogReaderResults = require('./LogReaderResults.react');
+import LogReaderToolbar from './LogReaderToolbar.react';
+import LogReaderResults from './LogReaderResults.react';
 
 //  The stores
-var LogStore = require('../stores/LogStore');
-var ConfigStore = require('../stores/ConfigStore');
+import LogStore from '../stores/LogStore';
+import ConfigStore from '../stores/ConfigStore';
 
-/*
-  Get the current state
- */
-function getAppState()
-{
-  return{
+class LogReaderApp extends Component {
+    
+  constructor(props) {
+    super(props);
+    
+    this.state = {
       logitems: LogStore.getLogData(),
       config: ConfigStore.getConfig(),
       itemcount: LogStore.getItemCount(),
       totalcount: LogStore.getTotalCount()
-  };
-}
-
-var LogReaderApp = React.createClass({
+    };
     
-  getInitialState: function() {
-    return getAppState();
-  },
+    //  Bind our event handlers:
+    this._onChange = this._onChange.bind(this);
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     //  Add store listeners ... and notify ME of changes
     ConfigStore.addChangeListener(this._onChange);
-  },
+  }
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     //  Remove store listeners
     ConfigStore.removeChangeListener(this._onChange);
-  },
+  }
 
   /**
    * @return {object}
    */
-  render: function() {
+  render() {
   	return (
       <div>
 
@@ -58,12 +55,17 @@ var LogReaderApp = React.createClass({
 
       </div>
   	);
-  },
-
-  _onChange: function() {
-    this.setState(getAppState());
   }
 
-});
+  _onChange() {
+    this.setState({
+      logitems: LogStore.getLogData(),
+      config: ConfigStore.getConfig(),
+      itemcount: LogStore.getItemCount(),
+      totalcount: LogStore.getTotalCount()
+    });
+  }
 
-module.exports = LogReaderApp;
+}
+
+export default LogReaderApp

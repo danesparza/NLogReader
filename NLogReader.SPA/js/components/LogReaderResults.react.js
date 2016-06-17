@@ -1,15 +1,16 @@
-var React = require('react');
-var moment = require('moment');
+import {Component} from 'react';
+import moment from 'moment';
+import SplitPane from 'react-split-pane';
 
 //  Grid component
-var DataGrid = require('react-datagrid');
+import DataGrid from 'react-datagrid';
 
 //  Components
-var LogReaderResultItem = require('./LogReaderResultItem.react');
-var LogReaderResultsHeader = require('./LogReaderResultsHeader.react');
+import LogReaderResultItem from './LogReaderResultItem.react';
+import LogReaderResultsHeader from './LogReaderResultsHeader.react';
 
 //  The stores
-var LogStore = require('../stores/LogStore');
+import LogStore from '../stores/LogStore';
 
 /*
   Get the current state
@@ -23,20 +24,12 @@ function getAppState()
   };
 }
 
-var LogReaderResults = React.createClass({
+class LogReaderResults extends Component {
 
-  componentDidMount: function() {
-    //  Add store listeners ... and notify ME of changes
-    LogStore.addChangeListener(this._onChange);
-  },
+  constructor(props) {
+    super(props);
 
-  componentWillUnmount: function() {
-    //  Remove store listeners
-    LogStore.removeChangeListener(this._onChange);
-  },
-
-  getInitialState: function() {
-    return{
+    this.state = {
       columns : [
         { name: 'entered_date', title: 'Date / time', width: 200, render: function(v){return moment(v).format('MMM-D h:mm a (s.S)');} },
         { name: 'log_application', title: 'Application', width: 150 },
@@ -55,61 +48,86 @@ var LogReaderResults = React.createClass({
       itemcount: 0,
       totalcount: 0
     };
-  },
+
+    //  Bind our event handlers:
+    this.onColumnResize = this.onColumnResize.bind(this);
+    this.onColumnOrderChange = this.onColumnOrderChange.bind(this);
+    this.onSelectionChange = this.onSelectionChange.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
+    this.onColumnVisibilityChange = this.onColumnVisibilityChange.bind(this);
+    this.handleRowStyle = this.handleRowStyle.bind(this);
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentDidMount() {
+    //  Add store listeners ... and notify ME of changes
+    LogStore.addChangeListener(this._onChange);
+  }
+
+  componentWillUnmount() {
+    //  Remove store listeners
+    LogStore.removeChangeListener(this._onChange);
+  }
 
   /**
    * @return {object}
    */
-  render: function() {
+  render() {
 
   	return (
       <div>
+
         <LogReaderResultsHeader />
 
-        <DataGrid
-          idProperty='system_logging_guid'
-          dataSource={this.state.logitems}
-          columns={this.state.columns}
-          emptyText={'No log information'}
-          onColumnResize={this.onColumnResize}
-          onColumnVisibilityChange={this.onColumnVisibilityChange}
-          onColumnOrderChange={this.onColumnOrderChange}
-          selected={this.state.SELECTED_ID}
-          onSelectionChange={this.onSelectionChange}
-          onFilter={this.handleFilter}
-          liveFilter={true} //to apply the filter while typing
-          rowStyle={this.handleRowStyle}
-          style={{height: 500}} />
+        <div>
+            <DataGrid
+            idProperty='system_logging_guid'
+            dataSource={this.state.logitems}
+            columns={this.state.columns}
+            emptyText={'No log information'}
+            onColumnResize={this.onColumnResize}
+            onColumnVisibilityChange={this.onColumnVisibilityChange}
+            onColumnOrderChange={this.onColumnOrderChange}
+            selected={this.state.SELECTED_ID}
+            onSelectionChange={this.onSelectionChange}
+            onFilter={this.handleFilter}
+            liveFilter={true} //to apply the filter while typing
+            rowStyle={this.handleRowStyle}
+            style={{height: 400}} />
+          </div>
+          <div>
+            <LogReaderResultItem item={this.state.selectedItem} />
+          </div>
 
-        <LogReaderResultItem item={this.state.selectedItem} />
+        
           
       </div>
   	);
-  },
+  }
 
-  onColumnResize: function(firstCol, firstSize, secondCol, secondSize){
+  onColumnResize(firstCol, firstSize, secondCol, secondSize){
       firstCol.width = firstSize
       this.setState({})
-  },
+  }
 
-  onColumnOrderChange: function (index, dropIndex){
+  onColumnOrderChange(index, dropIndex){
     var cols = this.state.columns;
     var col = cols[index];
     cols.splice(index, 1); //delete from index, 1 item
     cols.splice(dropIndex, 0, col);
     this.setState({columns: cols});
-  },
+  }
 
-  onSelectionChange: function(newSelectedId, data){
+  onSelectionChange(newSelectedId, data){
     this.setState({
       selectedItem: data,
       SELECTED_ID: newSelectedId
     })
-  },
+  }
 
-  handleFilter: function(column, value, allFilterValues){
+  handleFilter(column, value, allFilterValues){
     //  reset data to original data-array
-    filteredData = LogStore.getLogData();
+    let filteredData = LogStore.getLogData();
 
     //  go over all filters and apply them
     Object.keys(allFilterValues).forEach(function(name){        
@@ -129,14 +147,14 @@ var LogReaderResults = React.createClass({
     this.setState({
       logitems: filteredData
     });
-  },
+  }
 
-  onColumnVisibilityChange: function(col, visible) {
+  onColumnVisibilityChange(col, visible) {
     col.visible = visible
     this.setState({})
-  },
+  }
 
-  handleRowStyle: function(data, props){
+  handleRowStyle(data, props){
     var style = {}
 
     if (data.log_level == 'Error'){
@@ -153,12 +171,12 @@ var LogReaderResults = React.createClass({
     }
 
     return style
-  },
+  }
 
-   _onChange: function() {
+   _onChange() {
     this.setState(getAppState());
   }
 
-});
+}
 
-module.exports = LogReaderResults;
+export default LogReaderResults
