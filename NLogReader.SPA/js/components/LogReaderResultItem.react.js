@@ -5,7 +5,11 @@ class LogReaderResultItem extends Component {
     
   render() {
 
-    var log_message = this.props.item.log_message || "The selected log message will be displayed here";
+    let log_message = this.props.item.log_message || "The selected log message will be displayed here";
+    let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+
+    //  Debugging output:
+    // console.log(h);
 
   	return (
         <div id='selected-item'>
