@@ -1,20 +1,26 @@
 import {Component} from 'react';
 import moment from 'moment';
 
+//  Components
+import LogReaderResultItemDetail from './LogReaderResultItemDetail.react';
+
 class LogReaderResultItem extends Component {
     
   render() {
 
-    let log_message = this.props.item.log_message || "The selected log message will be displayed here";
-    let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+    let default_message = "The selected log message will be displayed here";
+    let log_detail = this.props.item.log_message || default_message;
 
-    //  Debugging output:
-    // console.log(h);
+    //  If it's not the default message, show the log details
+    if(log_detail != default_message)
+    {
+      log_detail = <LogReaderResultItemDetail item={this.props.item} />
+    }
 
   	return (
         <div id='selected-item'>
-          <div id='selected-item-body'>
-            <pre id='raw_log_message'>{log_message}</pre>
+          <div id='selected-item-body container'>
+            {log_detail}
           </div>
         </div>
   	);
