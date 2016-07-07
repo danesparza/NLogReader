@@ -1,70 +1,42 @@
-﻿var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
+﻿import {Store} from 'flux/utils';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import LogReaderConstants from '../constants/LogReaderConstants';
 
-var LogReaderConstants = require('../constants/LogReaderConstants');
-var CHANGE_EVENT = 'config-change';
+class ConfigStore extends Store {
 
-var _configdata = {
-  environments: [{"name": "Loading...", "url": "configNotLoadedYet"}]
-};
-var _selectedEnv = {};
+  constructor(dispatcher){
+    super(dispatcher);
 
-function setConfigData(config) {
-    _configdata = config;
-}
-
-function setSelectedEnv(environment)
-{
-  _selectedEnv = environment;
-}
-
-var ConfigStore = assign({}, EventEmitter.prototype, {
-
-  getConfig: function() {
-      return _configdata;
-  },
-
-  getEnvironment: function(){
-      return _selectedEnv;
-  },
-
-  emitChange: function() {
-    this.emit(CHANGE_EVENT);
-  },
-
-  /**
-   * @param {function} callback
-   */
-  addChangeListener: function(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  /**
-   * @param {function} callback
-   */
-  removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
+    this.configdata = { environments: [{"name": "Loading...", "url": "configNotLoadedYet"}] };
+    this.selectedEnv = {};
   }
-});
 
-// Register callback to handle all updates
-AppDispatcher.register(function(action) {
-  
-  switch(action.actionType) {
+  getConfig() {
+      return this.configdata;
+  }
+
+  getEnvironment(){
+      return this.selectedEnv;
+  }
+
+  __onDispatch(action) {
+    
+    switch(action.actionType) {
       case LogReaderConstants.RECEIVE_CONFIG:
-          setConfigData(action.config);
-          setSelectedEnv(action.config.environments[0]);
-          ConfigStore.emitChange();
+        this.configdata = action.config;
+        this.selectedEnv = action.config.environments[0];
+        this.__emitChange();
         break;
       case LogReaderConstants.SET_SELECTED_ENVIRONMENT:
-          setSelectedEnv(action.env);
-          ConfigStore.emitChange();
+        this.selectedEnv = action.env;
+        this.__emitChange();
         break;
 
-    default:
-      // no op
+      default:
+        // no op
+    }
   }
-});
 
-module.exports = ConfigStore;
+}
+
+module.exports = new ConfigStore(AppDispatcher);

@@ -26,12 +26,12 @@ class LogReaderApp extends Component {
 
   componentDidMount() {
     //  Add store listeners ... and notify ME of changes
-    ConfigStore.addChangeListener(this._onChange);
+    this.configListener = ConfigStore.addListener(this._onChange);
   }
 
   componentWillUnmount() {
     //  Remove store listeners
-    ConfigStore.removeChangeListener(this._onChange);
+    this.configListener.remove();
   }
 
   /**
