@@ -73,7 +73,7 @@ class LogReaderToolbar extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/">NLogReader</a>
+            <a className="navbar-brand" href="/">{this.props.appname}</a>
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             

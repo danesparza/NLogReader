@@ -41,7 +41,7 @@ class LogReaderApp extends Component {
   	return (
       <div>
 
-        <LogReaderToolbar environments={this.state.config.environments} />
+        <LogReaderToolbar environments={this.state.config.environments} appname={this.state.config.appname} />
 
         <div className="container-fluid">
 

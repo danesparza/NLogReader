@@ -1,4 +1,5 @@
 ﻿var appconfig = {
+    "appname": "NLogReader",
     "environments": [
     	{
     		"name": "Dev Environment",
