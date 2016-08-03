@@ -27,7 +27,7 @@ namespace NLogReader.Library
             LogFetchResponse result = new LogFetchResponse();
 
             //  Our placeholder result list
-            List<Data.system_logging> logitems = new List<Data.system_logging>();
+            List<system_logging> logitems = new List<system_logging>();
 
             //  The base query just gets information from the log table
             var query = from items in _context.system_logging
@@ -60,11 +60,11 @@ namespace NLogReader.Library
             //  Filter on the end date:
             query = query.Where(q => q.entered_date < request.EndDate);
 
-            //  Get the total count of the results now:
+            //  Order and get a count of the entire set
+            query = query.OrderByDescending(item => item.entered_date);
             var totalcount = query.Count();
 
             //  Filter on page number & size:
-            query = query.OrderByDescending(item => item.entered_date);
             query = query.Skip(request.Page * request.PageSize).Take(request.PageSize);
 
             //  Execute the query and set the results:
@@ -81,13 +81,19 @@ namespace NLogReader.Library
             return result;
         }
 
+        /// <summary>
+        /// Gets a list of all applications in the system
+        /// </summary>
+        /// <returns></returns>
         public string[] GetAllApplications()
         {
             //  Our return result
             string[] retval = new string[0];
 
             //  Get our list of applications:
-
+            retval = (from items in _context.system_logging
+                      orderby items.log_application
+                      select items.log_application).Distinct().ToArray();
 
             return retval;
         }

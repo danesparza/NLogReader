@@ -238,5 +238,20 @@ namespace NLogReader.Library.Tests
 
             Assert.AreEqual<int>(initialResults.Count, resultSetSize);
         }
+
+        [TestMethod]
+        public void GetAllApplications_IsSuccessful()
+        {
+            //  Arrange
+            LogDataManager manager = new LogDataManager(mockContext.Object);
+            int expectedNumberOfApplications = 3;
+
+            //  Act
+            string[] results = manager.GetAllApplications();
+
+            //  Assert
+            Assert.IsNotNull(results);
+            Assert.AreEqual(expectedNumberOfApplications, results.Count());
+        }
     }
 }
