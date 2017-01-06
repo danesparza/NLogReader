@@ -7,8 +7,13 @@ class ConfigStore extends Store {
   constructor(dispatcher){
     super(dispatcher);
 
-    this.configdata = { environments: [{"name": "Loading...", "url": "configNotLoadedYet"}] };
+    this.configdata = { environments: [{"name": "Loading...", "url": "configNotLoadedYet"}]};
     this.selectedEnv = {};
+  }
+
+  getPageSize() {
+      //  Return the page size, but default to 1500:
+      return this.configdata.pagesize || 1500;
   }
 
   getConfig() {

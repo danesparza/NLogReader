@@ -19,7 +19,8 @@ class LogReaderToolbar extends Component {
     this.state = {
       startDate: moment().startOf('day'),
       endDate: moment(),
-      selectedEnvironment: ConfigStore.getEnvironment()
+      selectedEnvironment: ConfigStore.getEnvironment(),
+      pageSize: ConfigStore.getPageSize()
     };
 
     //  Bind our event handlers:
@@ -130,7 +131,7 @@ class LogReaderToolbar extends Component {
     var params = {};
     params.StartDate = this.state.startDate.format('YYYY-MM-DD h:mma')
     params.EndDate = this.state.endDate.format('YYYY-MM-DD h:mma');
-    params.PageSize = 5000;
+    params.PageSize = this.state.pageSize;
     params.Page = 0;
     params.baseurl = this.state.selectedEnvironment.url;
     LogReaderAPIUtils.getLogItems(params);
