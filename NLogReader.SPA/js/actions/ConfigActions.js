@@ -1,22 +1,22 @@
-﻿var AppDispatcher = require('../dispatcher/AppDispatcher');
-var LogReaderConstants = require('../constants/LogReaderConstants');
+﻿import AppDispatcher from '../dispatcher/AppDispatcher';
+import LogReaderConstants from '../constants/LogReaderConstants';
 
-var ConfigActions = {
+class ConfigActions {
 
-  recieveConfigData: function(config) {
+  recieveConfigData(config) {
     AppDispatcher.dispatch({
         actionType: LogReaderConstants.RECEIVE_CONFIG,
         config: config
     });
-  },
+  }
 
-  setCurrentEnvironment: function(env) {
+  setCurrentEnvironment(env) {
     AppDispatcher.dispatch({
         actionType: LogReaderConstants.SET_SELECTED_ENVIRONMENT,
         env: env
     });
   }
     
-};
+}
 
-module.exports = ConfigActions;
+module.exports = new ConfigActions(AppDispatcher);

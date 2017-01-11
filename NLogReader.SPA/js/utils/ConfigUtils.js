@@ -1,5 +1,5 @@
 ﻿
-var ConfigActions = require('../actions/ConfigActions');
+import ConfigActions from '../actions/ConfigActions';
 
 module.exports = {
 

@@ -27,12 +27,12 @@ class LogReaderResultsHeader extends Component {
 
   componentDidMount() {
     //  Add store listeners ... and notify ME of changes
-    LogStore.addChangeListener(this._onChange);
+    this.logListener = LogStore.addListener(this._onChange);
   }
 
   componentWillUnmount() {
     //  Remove store listeners
-    LogStore.removeChangeListener(this._onChange);
+    this.logListener.remove();
   }
 
   /**

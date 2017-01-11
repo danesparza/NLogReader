@@ -1,119 +1,101 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
-var Immutable = require('immutable');
+import {Store} from 'flux/utils';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import LogReaderConstants from '../constants/LogReaderConstants';
 
-var LogReaderConstants = require('../constants/LogReaderConstants');
-var CHANGE_EVENT = 'logitem-change';
+import Immutable from 'immutable';
 
-var _logdata = Immutable.List();
-var _envurl = "";
-var _itemCount = 0;
-var _totalCount = 0;
+class LogStore extends Store {
 
-var _pageSize = 0;
-var _lastPageAdded = 0;
+    constructor(dispatcher){
+        super(dispatcher);
 
-var _startdate = {};
-var _enddate = {};
+        this.logdata = Immutable.List();
+        this.envurl = "";
+        this.itemCount = 0;
+        this.totalCount = 0;
+        this.pageSize = 0;
+        this.lastPageAdded = 0;
 
-function setLogData(logdata, totalcount, pagesize, lastpageadded, startdate, enddate, envurl) {
-    _logdata = Immutable.List(logdata);
-    _itemCount = _logdata.size;
-    _totalCount = totalcount;
-    
-    _pageSize = pagesize;
-    _lastPageAdded = lastpageadded;
+        this.startDate = {};
+        this.endDate = {};
+    }
 
-    _startdate = startdate;
-    _enddate = enddate;
+    setLogData(logdata, totalcount, pagesize, lastpageadded, startdate, enddate, envurl) {
+        this.logdata = Immutable.List(logdata);
+        this.itemCount = this.logdata.size;
+        this.totalCount = totalcount;
+        
+        this.pageSize = pagesize;
+        this.lastPageAdded = lastpageadded;
 
-    _envurl = envurl;
+        this.startDate = startdate;
+        this.endDate = enddate;
+
+        this.envurl = envurl;
+    }
+
+    mergeLogData(logdata, totalcount, pagesize, lastpageadded, startdate, enddate) {
+        this.logdata = this.logdata.concat(logdata);
+        this.itemCount = this.logdata.size;
+        this.totalCount = totalcount;
+
+        this.pageSize = pagesize;
+        this.lastPageAdded = lastpageadded;
+
+        this.startDate = startdate;
+        this.endDate = enddate;
+    }
+
+    getLogData() {
+        return this.logdata.toJS();
+    }
+
+    getItemCount() {
+        return this.itemCount;
+    }
+
+    getTotalCount() {
+        return this.totalCount;
+    }
+
+    getNextPageNumber() {
+        return this.lastPageAdded + 1;
+    }
+
+    getPageSize() {
+        return this.pageSize;
+    }
+
+    getMoreUrl() {
+        return this.envurl;
+    }
+
+    getStartDate() {
+        return this.startDate;
+    }
+
+    getEndDate() {
+        return this.endDate;
+    }
+
+    __onDispatch(action) {
+
+        switch(action.actionType) {
+            case LogReaderConstants.RECEIVE_RAW_LOG_ITEMS:
+                this.setLogData(action.logData, action.totalCount, action.pagesize, action.pagenumber, action.startdate, action.enddate, action.envurl);
+                this.__emitChange();
+                break;
+            case LogReaderConstants.MERGE_RAW_LOG_ITEMS:
+                this.mergeLogData(action.logData, action.totalCount, action.pagesize, action.pagenumber, action.startdate, action.enddate);
+                this.__emitChange();
+                break;
+
+            default:
+            // no op
+        }
+    }
+
 }
 
-function mergeLogData(logdata, totalcount, pagesize, lastpageadded, startdate, enddate) {
-    _logdata = _logdata.concat(logdata);
-    _itemCount = _logdata.size;
-    _totalCount = totalcount;
-    
-    _pageSize = pagesize;
-    _lastPageAdded = lastpageadded;
 
-    _startdate = startdate;
-    _enddate = enddate;
-}
-
-var LogStore = assign({}, EventEmitter.prototype, {
-
-  getLogData: function() {
-      return _logdata.toJS();
-  },
-
-  getItemCount: function() {
-      return _itemCount;
-  },
-
-  getTotalCount: function() {
-      return _totalCount;
-  },
-
-  getNextPageNumber: function() {
-      return _lastPageAdded + 1;
-  },
-
-  getPageSize: function() {
-      return _pageSize;
-  },
-
-  getMoreUrl: function() {
-      return _envurl;
-  },
-
-  getStartDate: function() {
-      return _startdate;
-  },
-
-  getEndDate: function() {
-      return _enddate;
-  },
-
-  emitChange: function() {
-    this.emit(CHANGE_EVENT);
-  },
-
-  /**
-   * @param {function} callback
-   */
-  addChangeListener: function(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  /**
-   * @param {function} callback
-   */
-  removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  }
-});
-
-// Register callback to handle all updates
-AppDispatcher.register(function(action) {
-  
-  switch(action.actionType) {
-      case LogReaderConstants.RECEIVE_RAW_LOG_ITEMS:
-          setLogData(action.logData, action.totalCount, action.pagesize, action.pagenumber, action.startdate, action.enddate, action.envurl);
-          LogStore.emitChange();
-        break;
-      
-      case LogReaderConstants.MERGE_RAW_LOG_ITEMS:
-          mergeLogData(action.logData, action.totalCount, action.pagesize, action.pagenumber, action.startdate, action.enddate);
-          LogStore.emitChange();
-        break;
-
-
-    default:
-      // no op
-  }
-});
-
-module.exports = LogStore;
+module.exports = new LogStore(AppDispatcher);

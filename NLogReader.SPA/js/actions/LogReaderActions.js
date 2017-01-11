@@ -1,9 +1,9 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var LogReaderConstants = require('../constants/LogReaderConstants');
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import LogReaderConstants from '../constants/LogReaderConstants';
 
-var LogReaderActions = {
+class LogReaderActions {
 
-  recieveLogData: function(logData, totalCount, url, pagesize, pagenumber, startdate, enddate) {
+  recieveLogData(logData, totalCount, url, pagesize, pagenumber, startdate, enddate) {
     AppDispatcher.dispatch({
         actionType: LogReaderConstants.RECEIVE_RAW_LOG_ITEMS,
         logData: logData,
@@ -14,9 +14,9 @@ var LogReaderActions = {
         startdate: startdate,
         enddate: enddate
     });
-  },
+  }
 
-  mergeLogData: function(logData, totalCount, url, pagesize, pagenumber, startdate, enddate) {
+  mergeLogData(logData, totalCount, url, pagesize, pagenumber, startdate, enddate) {
     AppDispatcher.dispatch({
         actionType: LogReaderConstants.MERGE_RAW_LOG_ITEMS,
         logData: logData,
@@ -29,6 +29,6 @@ var LogReaderActions = {
     });
   }
 
-};
+}
 
-module.exports = LogReaderActions;
+module.exports = new LogReaderActions(AppDispatcher);

@@ -1,5 +1,6 @@
 ﻿var appconfig = {
     "appname": "NLogReader",
+	"pagesize": 5000,
     "environments": [
     	{
     		"name": "Dev Environment",
