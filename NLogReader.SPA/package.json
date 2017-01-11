@@ -4,14 +4,12 @@
   "author": "Dan Esparza",
   "description": "NLog reader",
   "license": "MIT",
-  "main": "js/app.js",  
+  "main": "js/app.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/danesparza/NLogReader.git"
   },
   "dependencies": {
-    "cookies-js": "^1.0.0",
-    "director": "^1.2.7",
     "flux": "^2.0.0",
     "getconfig": "^2.1.0",
     "immutable": "^3.7.3",
@@ -22,7 +20,6 @@
     "react": "^0.14.8",
     "react-addons-update": "^0.14.8",
     "react-bootstrap-daterangepicker": "^2.0.0",
-    "react-bootstrap-modal": "^2.0.0",
     "react-datagrid": "^2.0.4",
     "react-dimensions": "^1.2.0",
     "react-dom": "^0.14.8"
@@ -32,10 +29,10 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
-    "webpack": "^1.13.1"
+    "webpack": "^1.14.0"
   },
   "scripts": {
     "build": "webpack -p",
     "start": "webpack -w"
-  }    
+  }
 }
