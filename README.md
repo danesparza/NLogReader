@@ -31,11 +31,11 @@ The web app is a React/Flux single page app.  Configuration is in config.js
 
 Watching for changes and automatically rebuilding bundle.js:
 ```
-npm start
+webpack -w
 ```
 
 Building a release version of the bundle.js
 ```
-npm run build
+webpack -p
 ```
 
