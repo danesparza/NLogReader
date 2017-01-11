@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 
 window.React = React; // export for http://fb.me/react-devtools
 
-//  Cookie manager
-import cookies from 'cookies-js';
-
 //  The Actions
 import ConfigActions from './actions/ConfigActions';
 
