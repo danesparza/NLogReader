@@ -27,7 +27,7 @@ Also, this service assumes you are logging to a database.  If you're not, just [
 ### Making changes to the code
 
 #### The web app
-The web app is a React/Flux single page app.  Configuration is in config.js
+The [web app](https://github.com/danesparza/NLogReader/tree/master/NLogReader.SPA) is a React/Flux single page app.  Configuration is in config.js
 
 Watching for changes and automatically rebuilding bundle.js:
 ```
