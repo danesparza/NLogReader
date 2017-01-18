@@ -95,13 +95,39 @@ class LogReaderToolbar extends Component {
               </div>
 
               <div className="form-group">
-                <button className="btn btn-primary toolbar-control" onClick={this._searchClick}>Search</button>
+                &nbsp;
+                <div className="btn-group">
+                  <button className="btn btn-primary toolbar-control" onClick={this._searchClick}>Search</button>
+                  <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <span className="caret"></span>
+                    <span className="sr-only">Toggle Dropdown</span>
+                  </button>
+                </div>
               </div>
 
             </form>
 
           </div>
         </div>
+        
+        <div className="panel panel-default collapse" id="collapseExample">
+          <div className="panel-heading">
+            <b className="panel-title">Search options</b>
+          </div>
+          <div className="panel-body">
+            <form>
+              <div className="form-group">
+                <label for="txtApplication">Application</label>
+                <input type="text" className="form-control" id="txtApplication" placeholder="Application"/>
+              </div>
+              <div class="form-group">
+                <label for="txtMessage">Message</label>
+                <input type="text" className="form-control" id="txtMessage" placeholder="Message"/>
+              </div>
+            </form>
+          </div>
+        </div>
+
       </nav>
   	);
   }

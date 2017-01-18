@@ -17,7 +17,7 @@ module.exports = {
         }
       }
     ],
-  },
+  }/*,
   plugins: [
     new webpack.DefinePlugin({
         'process.env': {
@@ -43,4 +43,5 @@ module.exports = {
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/])
   ]
+  */
 };
