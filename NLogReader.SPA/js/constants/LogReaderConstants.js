@@ -5,6 +5,8 @@ module.exports = keyMirror({
   MERGE_RAW_LOG_ITEMS: null,
   RECEIVE_CONFIG: null,
   SET_SELECTED_ENVIRONMENT: null,
+  SET_SEARCH_APPLICATION: null,
+  SET_SEARCH_MESSAGE: null,
   SHOW_SETTINGS: null,
   SHOW_HOME: null
 });

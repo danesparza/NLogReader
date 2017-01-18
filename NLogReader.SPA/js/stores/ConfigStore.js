@@ -9,6 +9,8 @@ class ConfigStore extends Store {
 
     this.configdata = { environments: [{"name": "Loading...", "url": "configNotLoadedYet"}]};
     this.selectedEnv = {};
+    this.selectedApp = "";
+    this.selectedMsg = "";
   }
 
   getPageSize() {
@@ -34,6 +36,14 @@ class ConfigStore extends Store {
         break;
       case LogReaderConstants.SET_SELECTED_ENVIRONMENT:
         this.selectedEnv = action.env;
+        this.__emitChange();
+        break;
+      case LogReaderConstants.SET_SEARCH_APPLICATION:
+        this.selectedApp = action.application;
+        this.__emitChange();
+        break;
+      case LogReaderConstants.SET_SEARCH_MESSAGE:
+        this.selectedMsg = action.message;
         this.__emitChange();
         break;
 
