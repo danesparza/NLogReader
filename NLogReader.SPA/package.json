@@ -13,7 +13,6 @@
     "flux": "^2.0.0",
     "getconfig": "^2.1.0",
     "immutable": "^3.7.3",
-    "keymirror": "~0.1.0",
     "moment": "^2.13.0",
     "nprogress": "^0.2.0",
     "object-assign": "^1.0.0",
