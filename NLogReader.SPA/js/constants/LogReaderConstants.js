@@ -6,7 +6,7 @@ module.exports = keyMirror({
   RECEIVE_CONFIG: null,
   SET_SELECTED_ENVIRONMENT: null,
   SET_SEARCH_APPLICATION: null,
-  SET_SEARCH_MESSAGE: null,
+  SET_SEARCH_MACHINE: null,
   SHOW_SETTINGS: null,
   SHOW_HOME: null
 });

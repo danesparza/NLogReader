@@ -5,6 +5,7 @@ import LogReaderAPIUtils from '../utils/LogReaderAPIUtils';
 
 //  The stores
 import LogStore from '../stores/LogStore';
+import ConfigStore from '../stores/ConfigStore';
 
 class LogReaderResultsHeader extends Component {
 
@@ -74,6 +75,11 @@ class LogReaderResultsHeader extends Component {
     params.PageSize = this.state.pagesize;
     params.Page = this.state.nextpagenumber;
     params.baseurl = this.state.moreurl;
+
+    //  See if we have an application or machine name filter:
+    params.ApplicationName = ConfigStore.getSelectedApplication();
+    params.MachineName = ConfigStore.getSelectedMachine();
+
     LogReaderAPIUtils.getMoreLogItems(params);
   }
 

@@ -1,6 +1,6 @@
 
-var LogReaderActions = require('../actions/LogReaderActions');
-var nprogress = require('nprogress');
+import LogReaderActions from '../actions/LogReaderActions';
+import nprogress from 'nprogress';
 
 module.exports = {
 

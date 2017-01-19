@@ -24,10 +24,10 @@ class ConfigActions {
     });
   }
 
-  setSearchMessage(message) {
+  setSearchMachine(machine) {
     AppDispatcher.dispatch({
-        actionType: LogReaderConstants.SET_SEARCH_MESSAGE,
-        message: message
+        actionType: LogReaderConstants.SET_SEARCH_MACHINE,
+        machine: machine
     });
   }
     

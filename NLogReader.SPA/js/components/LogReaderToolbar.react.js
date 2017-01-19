@@ -19,8 +19,10 @@ class LogReaderToolbar extends Component {
     this.state = {
       startDate: moment().startOf('day'),
       endDate: moment(),
+      pageSize: ConfigStore.getPageSize(),
       selectedEnvironment: ConfigStore.getEnvironment(),
-      pageSize: ConfigStore.getPageSize()
+      selectedApplication: ConfigStore.getSelectedApplication(),
+      selectedMachine: ConfigStore.getSelectedMachine()
     };
 
     //  Bind our event handlers:
@@ -28,6 +30,9 @@ class LogReaderToolbar extends Component {
     this._envChange = this._envChange.bind(this);
     this._searchClick = this._searchClick.bind(this);    
     this._onChange = this._onChange.bind(this);
+
+    this._appChange = this._appChange.bind(this);
+    this._machineChange = this._machineChange.bind(this);
   }
 
   componentDidMount() {
@@ -117,12 +122,12 @@ class LogReaderToolbar extends Component {
           <div className="panel-body">
             <form>
               <div className="form-group">
-                <label for="txtApplication">Application</label>
-                <input type="text" className="form-control" id="txtApplication" placeholder="Application"/>
+                <label htmlFor="txtApplication">Application</label>
+                <input value={this.state.selectedApplication} onChange={this._appChange} type="text" className="form-control" id="txtApplication" placeholder="Application"/>
               </div>
-              <div class="form-group">
-                <label for="txtMessage">Message</label>
-                <input type="text" className="form-control" id="txtMessage" placeholder="Message"/>
+              <div className="form-group">
+                <label htmlFor="txtMessage">Machine</label>
+                <input value={this.state.selectedMachine} onChange={this._machineChange} type="text" className="form-control" id="txtMessage" placeholder="Machine"/>
               </div>
             </form>
           </div>
@@ -150,6 +155,16 @@ class LogReaderToolbar extends Component {
     ConfigActions.setCurrentEnvironment(env)
   }
 
+  _appChange(e){
+    //  Set the selected application filter:
+    ConfigActions.setSearchApplication(e.target.value);
+  }
+
+  _machineChange(e){
+    //  Set the selected message filter:
+    ConfigActions.setSearchMachine(e.target.value);
+  }
+
   _searchClick(e) {
     e.preventDefault();
 
@@ -160,12 +175,19 @@ class LogReaderToolbar extends Component {
     params.PageSize = this.state.pageSize;
     params.Page = 0;
     params.baseurl = this.state.selectedEnvironment.url;
+
+    //  See if we have an application or machine name filter:
+    params.ApplicationName = this.state.selectedApplication;
+    params.MachineName = this.state.selectedMachine;
+
     LogReaderAPIUtils.getLogItems(params);
   }
 
   _onChange() {
     this.setState({
-      selectedEnvironment: ConfigStore.getEnvironment()
+      selectedEnvironment: ConfigStore.getEnvironment(),
+      selectedApplication: ConfigStore.getSelectedApplication(),
+      selectedMachine: ConfigStore.getSelectedMachine()
     });
   }
 
