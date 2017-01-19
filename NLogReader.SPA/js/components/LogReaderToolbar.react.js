@@ -30,9 +30,6 @@ class LogReaderToolbar extends Component {
     this._envChange = this._envChange.bind(this);
     this._searchClick = this._searchClick.bind(this);    
     this._onChange = this._onChange.bind(this);
-
-    this._appChange = this._appChange.bind(this);
-    this._machineChange = this._machineChange.bind(this);
   }
 
   componentDidMount() {
@@ -105,31 +102,13 @@ class LogReaderToolbar extends Component {
                   <button className="btn btn-primary toolbar-control" onClick={this._searchClick}>Search</button>
                   <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     <span className="caret"></span>
-                    <span className="sr-only">Toggle Dropdown</span>
+                    <span className="sr-only">Toggle search options</span>
                   </button>
                 </div>
               </div>
 
             </form>
 
-          </div>
-        </div>
-        
-        <div className="panel panel-default collapse" id="collapseExample">
-          <div className="panel-heading">
-            <b className="panel-title">Search options</b>
-          </div>
-          <div className="panel-body">
-            <form>
-              <div className="form-group">
-                <label htmlFor="txtApplication">Application</label>
-                <input value={this.state.selectedApplication} onChange={this._appChange} type="text" className="form-control" id="txtApplication" placeholder="Application"/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="txtMessage">Machine</label>
-                <input value={this.state.selectedMachine} onChange={this._machineChange} type="text" className="form-control" id="txtMessage" placeholder="Machine"/>
-              </div>
-            </form>
           </div>
         </div>
 
@@ -153,16 +132,6 @@ class LogReaderToolbar extends Component {
 
     //  Set the current environment:
     ConfigActions.setCurrentEnvironment(env)
-  }
-
-  _appChange(e){
-    //  Set the selected application filter:
-    ConfigActions.setSearchApplication(e.target.value);
-  }
-
-  _machineChange(e){
-    //  Set the selected message filter:
-    ConfigActions.setSearchMachine(e.target.value);
   }
 
   _searchClick(e) {
