@@ -253,5 +253,21 @@ namespace NLogReader.Library.Tests
             Assert.IsNotNull(results);
             Assert.AreEqual(expectedNumberOfApplications, results.Count());
         }
+
+        [TestMethod]
+        public void GetAllLogCounts_IsSuccessful()
+        {
+            //  Arrange
+            LogDataManager manager = new LogDataManager(mockContext.Object);
+            int expectedNumberOfApplications = 3;
+
+            //  Act
+            List<LogCountResponse> results = manager.GetAllLogCounts();
+
+            //  Assert
+            Assert.IsNotNull(results);
+            Assert.AreEqual(expectedNumberOfApplications, results.Count());
+            Assert.AreEqual(0, results[0].DebugCount);
+        }
     }
 }

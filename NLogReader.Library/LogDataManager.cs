@@ -97,5 +97,32 @@ namespace NLogReader.Library
 
             return retval;
         }
+
+        /// <summary>
+        /// Get log counts for all applications in the system
+        /// </summary>
+        /// <returns></returns>
+        public List<LogCountResponse> GetAllLogCounts()
+        {
+            List<LogCountResponse> retval = new List<LogCountResponse>();
+
+            //  Get the list of applications and each of their log counts:
+            retval = (from logitem in _context.system_logging
+                      orderby logitem.log_application
+                      group logitem by logitem.log_application into grp
+                      select new LogCountResponse
+                      {
+                          Application = grp.Key,
+                          TotalCount = grp.Count(),
+                          TraceCount = grp.Where(x => x.log_level == "Trace").Count(),
+                          DebugCount = grp.Where(x => x.log_level == "Debug").Count(),
+                          InfoCount = grp.Where(x => x.log_level == "Info").Count(),
+                          WarnCount = grp.Where(x => x.log_level == "Warn").Count(),
+                          ErrorCount = grp.Where(x => x.log_level == "Error").Count(),
+                          FatalCount = grp.Where(x => x.log_level == "Fatal").Count()
+                      }).ToList();
+
+            return retval;
+        }
     }
 }
