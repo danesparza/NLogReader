@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using NLogReader.Library;
@@ -60,6 +61,21 @@ namespace NLogReader.WebAPI.Controllers
                 LogDataManager manager = new LogDataManager(db);
                 return manager.GetLogItems(request ?? new LogFetchRequest());
             }
+        }
+
+        /// <summary>
+        /// Gets the list of applications that have logged data
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("applications")]
+        public List<string> GetAllApplications()
+        {
+            using(var db = new Application_LogsEntities())
+            {
+                LogDataManager manager = new LogDataManager(db);
+                return manager.GetAllApplications();
+            }   
         }
     }
 }

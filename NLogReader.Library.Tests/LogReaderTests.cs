@@ -247,7 +247,7 @@ namespace NLogReader.Library.Tests
             int expectedNumberOfApplications = 3;
 
             //  Act
-            string[] results = manager.GetAllApplications();
+            List<string> results = manager.GetAllApplications();
 
             //  Assert
             Assert.IsNotNull(results);

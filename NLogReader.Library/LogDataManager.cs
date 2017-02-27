@@ -85,15 +85,15 @@ namespace NLogReader.Library
         /// Gets a list of all applications in the system
         /// </summary>
         /// <returns></returns>
-        public string[] GetAllApplications()
+        public List<string> GetAllApplications()
         {
             //  Our return result
-            string[] retval = new string[0];
+            List<string> retval = new List<string>();
 
             //  Get our list of applications:
             retval = (from items in _context.system_logging
                       orderby items.log_application
-                      select items.log_application).Distinct().ToArray();
+                      select items.log_application).Distinct().ToList();
 
             return retval;
         }
