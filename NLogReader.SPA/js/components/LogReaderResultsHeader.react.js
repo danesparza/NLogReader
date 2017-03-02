@@ -1,7 +1,12 @@
 import {Component} from 'react';
+import {BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import moment from 'moment'
 
 //  The API utils
 import LogReaderAPIUtils from '../utils/LogReaderAPIUtils';
+
+//  The components
+import LogReaderTimelineGraph from '../components/LogReaderTimelineGraph.react';
 
 //  The stores
 import LogStore from '../stores/LogStore';
@@ -50,7 +55,9 @@ class LogReaderResultsHeader extends Component {
     {
       return (
         <div id='results-header'>
-          Showing <b>{this.state.itemcount}</b> log items out of <b>{this.state.totalcount}</b> <button type='button' className='btn btn-success btn-xs' onClick={this._moreClick}>Show more</button>
+          Showing <b>{this.state.itemcount}</b> log items out of <b>{this.state.totalcount}</b> <button type='button' className='btn btn-success btn-xs' onClick={this._moreClick}>Show more</button> <button className="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#timelineGraph" aria-expanded="false" aria-controls="timelineGraph">Timeline graph</button>
+          
+          <LogReaderTimelineGraph />
         </div>
       );  
     }
@@ -58,7 +65,9 @@ class LogReaderResultsHeader extends Component {
     {
        return (
         <div id='results-header'>
-          Showing <b>{this.state.itemcount}</b> log items
+          Showing <b>{this.state.itemcount}</b> log items <button className="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#timelineGraph" aria-expanded="false" aria-controls="timelineGraph">Timeline graph</button>
+
+          <LogReaderTimelineGraph />
         </div>
       );   
     }

@@ -595,7 +595,7 @@ babylon@^6.11.0:
   version "6.15.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.15.0.tgz#ba65cfa1a80e1759b0e89fb562e27dccae70348e"
 
-balanced-match@^0.4.1:
+balanced-match@^0.4.1, balanced-match@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
 
@@ -727,7 +727,7 @@ chokidar@^1.0.0:
   optionalDependencies:
     fsevents "^1.0.0"
 
-classnames@^2.2.3, classnames@^2.2.5:
+classnames@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -799,17 +799,13 @@ convert-source-map@^1.1.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.3.0.tgz#e9f3e9c6e2728efc2676696a70eb382f73106a67"
 
-cookies-js@^1.0.0:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/cookies-js/-/cookies-js-1.2.3.tgz#03315049e7c52bee3f73186a69167eab0ddb2d31"
+core-js@2.4.1, core-js@^2.4.0:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
 
 core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
-
-core-js@^2.4.0:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
 
 core-util-is@~1.0.0:
   version "1.0.2"
@@ -833,6 +829,60 @@ crypto-browserify@3.3.0:
 css-utils@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/css-utils/-/css-utils-1.0.0.tgz#afd71b719ae98ef2da21000aed923c30675e7e37"
+
+d3-array@1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.1.0.tgz#bfea66b89d46f9aedf77296d3aad6307b50771cc"
+
+d3-collection@1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/d3-collection/-/d3-collection-1.0.2.tgz#df5acb5400443e9eabe9c1379896c67e52426b39"
+
+d3-color@1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.0.2.tgz#83cb4b3a9474e40795f009d97e97a15649830bbc"
+
+d3-format@1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.1.0.tgz#736775d5e6604421bef6c76d5746638a8e70d295"
+
+d3-interpolate@1:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-1.1.3.tgz#e119c91b6be4941e581675ca3e1279bb92bd2c9b"
+  dependencies:
+    d3-color "1"
+
+d3-path@1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.3.tgz#60103d0dea9a6cd6ca58de86c6d56724002d3fde"
+
+d3-scale@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-1.0.4.tgz#50e28bf6a193b706745528515ed9b3d44205a033"
+  dependencies:
+    d3-array "1"
+    d3-collection "1"
+    d3-color "1"
+    d3-format "1"
+    d3-interpolate "1"
+    d3-time "1"
+    d3-time-format "2"
+
+d3-shape@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.0.4.tgz#145ee100ccbec42f8e3f1996cd05c786f79fe1c6"
+  dependencies:
+    d3-path "1"
+
+d3-time-format@2:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/d3-time-format/-/d3-time-format-2.0.4.tgz#db0ab6910b3f2fc729a2ddfd2ac1b750962e1f72"
+  dependencies:
+    d3-time "1"
+
+d3-time@1:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-1.0.5.tgz#ef07a27d4b56522d984a41c27b1c67aa80b0cdd9"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -888,14 +938,6 @@ detective@^4.3.1:
   dependencies:
     acorn "^3.1.0"
     defined "^1.0.0"
-
-director@^1.2.7:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/director/-/director-1.2.8.tgz#c6d9b4dd890e9aff5365183fe9cc8e73994cf2d5"
-
-dom-helpers@^2.2.4, dom-helpers@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-2.4.0.tgz#9bb4b245f637367b1fa670274272aa28fe06c367"
 
 domain-browser@^1.1.1:
   version "1.1.7"
@@ -1483,10 +1525,6 @@ jstransform@^11.0.3:
     object-assign "^2.0.0"
     source-map "^0.4.2"
 
-keymirror@~0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/keymirror/-/keymirror-0.1.1.tgz#918889ea13f8d0a42e7c557250eee713adc95c35"
-
 kind-of@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.1.0.tgz#475d698a5e49ff5e53d14e3e732429dc8bf4cf47"
@@ -1506,7 +1544,7 @@ loader-utils@^0.2.11:
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
-lodash@^4.2.0:
+lodash@^4.16.4, lodash@^4.2.0, lodash@~4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -1519,6 +1557,10 @@ loose-envify@^1.0.0:
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.3.0.tgz#6b26248c42f6d4fa4b0d8542f78edfcde35642a8"
   dependencies:
     js-tokens "^2.0.0"
+
+math-expression-evaluator@^1.2.14:
+  version "1.2.16"
+  resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.16.tgz#b357fa1ca9faefb8e48d10c14ef2bcb2d9f0a7c9"
 
 memory-fs@^0.2.0:
   version "0.2.0"
@@ -1768,6 +1810,10 @@ pbkdf2-compat@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pbkdf2-compat/-/pbkdf2-compat-2.0.1.tgz#b6e0c8fa99494d94e0511575802a59a5c142f288"
 
+performance-now@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
+
 pinkie-promise@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pinkie-promise/-/pinkie-promise-2.0.1.tgz#2135d6dfa7a358c069ac9b178776288228450ffa"
@@ -1838,6 +1884,12 @@ querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
+raf@^3.2.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/raf/-/raf-3.3.0.tgz#93845eeffc773f8129039f677f80a36044eee2c3"
+  dependencies:
+    performance-now "~0.2.0"
+
 randomatic@^1.1.3:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-1.1.6.tgz#110dcabff397e9dcff7c0789ccc0a49adf1ec5bb"
@@ -1854,6 +1906,13 @@ rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~1.0.4"
 
+"react-addons-transition-group@^0.14.0 || ^15.0.0":
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/react-addons-transition-group/-/react-addons-transition-group-15.4.2.tgz#4c42fa1c2ce024acab2924316c0f11268ded1af3"
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
 react-addons-update@^0.14.8:
   version "0.14.8"
   resolved "https://registry.yarnpkg.com/react-addons-update/-/react-addons-update-0.14.8.tgz#486f1fb71e09ef8ad09c0e95fbe59d173782fe1a"
@@ -1864,14 +1923,6 @@ react-bootstrap-daterangepicker@^2.0.0:
   dependencies:
     bootstrap-daterangepicker "^2.1.24"
     object-assign "^4.1.0"
-
-react-bootstrap-modal@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-bootstrap-modal/-/react-bootstrap-modal-2.1.0.tgz#758ece08293b9b5452a869061cfa492d835f59d0"
-  dependencies:
-    classnames "^2.2.3"
-    dom-helpers "^2.2.4"
-    react-overlays "^0.6.0"
 
 react-class@^1.2.4:
   version "1.2.4"
@@ -1949,20 +2000,9 @@ react-menus@^2.0.5:
     region-align "^2.1.3"
     select-parent "^1.0.1"
 
-react-overlays@^0.6.0:
-  version "0.6.10"
-  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.6.10.tgz#e7e52dad47f00a0fc784eb044428c3a9e874bfa3"
-  dependencies:
-    classnames "^2.2.5"
-    dom-helpers "^2.4.0"
-    react-prop-types "^0.4.0"
-    warning "^3.0.0"
-
-react-prop-types@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/react-prop-types/-/react-prop-types-0.4.0.tgz#f99b0bfb4006929c9af2051e7c1414a5c75b93d0"
-  dependencies:
-    warning "^3.0.0"
+react-resize-detector@0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/react-resize-detector/-/react-resize-detector-0.3.3.tgz#ca07443072324843586666d9443a6356da7c0501"
 
 react-simple-toolbar@^1.0.5:
   version "1.0.5"
@@ -1971,6 +2011,14 @@ react-simple-toolbar@^1.0.5:
     object-assign "^2.0.0"
     react-clonewithprops "^1.0.1"
     react-style-normalizer "^1.2.6"
+
+react-smooth@0.1.20:
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/react-smooth/-/react-smooth-0.1.20.tgz#0527eb60d0ee529e98720127aea5d3fbd2e59fb7"
+  dependencies:
+    lodash "^4.16.4"
+    raf "^3.2.0"
+    react-addons-transition-group "^0.14.0 || ^15.0.0"
 
 react-style-normalizer@^1.2.0, react-style-normalizer@^1.2.6, react-style-normalizer@^1.2.7, react-style-normalizer@^1.2.8:
   version "1.2.8"
@@ -2035,6 +2083,38 @@ recast@^0.11.17:
     esprima "~3.1.0"
     private "~0.1.5"
     source-map "~0.5.0"
+
+recharts-scale@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/recharts-scale/-/recharts-scale-0.3.0.tgz#d17e8c4055dbbeb0d65435c9142ee0fb9054758a"
+
+recharts@^0.21.2:
+  version "0.21.2"
+  resolved "https://registry.yarnpkg.com/recharts/-/recharts-0.21.2.tgz#e48b4779e60e0df542d97df8cdee3aff8705f9d4"
+  dependencies:
+    classnames "2.2.5"
+    core-js "2.4.1"
+    d3-scale "1.0.4"
+    d3-shape "1.0.4"
+    lodash "~4.17.4"
+    react-resize-detector "0.3.3"
+    react-smooth "0.1.20"
+    recharts-scale "0.3.0"
+    reduce-css-calc "1.3.0"
+
+reduce-css-calc@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/reduce-css-calc/-/reduce-css-calc-1.3.0.tgz#747c914e049614a4c9cfbba629871ad1d2927716"
+  dependencies:
+    balanced-match "^0.4.2"
+    math-expression-evaluator "^1.2.14"
+    reduce-function-call "^1.0.1"
+
+reduce-function-call@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/reduce-function-call/-/reduce-function-call-1.0.2.tgz#5a200bf92e0e37751752fe45b0ab330fd4b6be99"
+  dependencies:
+    balanced-match "^0.4.2"
 
 regenerate@^1.2.1:
   version "1.3.2"
@@ -2398,12 +2478,6 @@ vm-browserify@0.0.4:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
   dependencies:
     indexof "0.0.1"
-
-warning@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/warning/-/warning-3.0.0.tgz#32e5377cb572de4ab04753bdf8821c01ed605b7c"
-  dependencies:
-    loose-envify "^1.0.0"
 
 watchpack@^0.2.1:
   version "0.2.9"
