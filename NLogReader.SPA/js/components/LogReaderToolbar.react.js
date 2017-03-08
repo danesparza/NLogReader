@@ -150,6 +150,7 @@ class LogReaderToolbar extends Component {
     params.MachineName = this.state.selectedMachine;
 
     LogReaderAPIUtils.getLogItems(params);
+    LogReaderAPIUtils.getHourlyCounts(params);
   }
 
   _onChange() {

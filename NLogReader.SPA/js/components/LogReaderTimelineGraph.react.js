@@ -47,44 +47,13 @@ const data = [
       {time: new Date(2016,5,21, 3, 34, 54).getTime(), name: '40', debug: -50, error: 186}
     ];
 
-const dateFormat = (time) => {
-	return moment(time).format('MM/DD ');
-};
-
-const getTicks = (data) => {
-	if (!data || !data.length ) {return [];}
-  
-  const domain = [new Date(data[0].time), new Date(data[data.length - 1].time)];
-	const scale = d3_scale.scaleTime().domain(domain).range([0, 1]);
-  const ticks = scale.ticks(d3_time.timeDay, 1);
-  
-  return ticks.map(entry => +entry);
-};
-
-const getTicksData = (data, ticks) => {
-	if (!data || !data.length ) {return [];}
-  const dataMap = new Map(data.map((i) => [i.time, i]));
-  ticks.forEach(function (item, index, array) {
-  	if(!dataMap.has(item)) {
-    	data.push({time: item});
-    }
-	});
-  return data;
-}
-
 class LogReaderTimelineGraph extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            nextpagenumber: LogStore.getNextPageNumber(),
-            pagesize: LogStore.getPageSize(),
-            moreurl: LogStore.getMoreUrl(),
-            startDate: LogStore.getStartDate(),
-            endDate: LogStore.getEndDate(),
-            itemcount: LogStore.getItemCount(),
-            totalcount: LogStore.getTotalCount()
+            logcountdata: LogStore.getHourlyLogData()
         };
 
         //  Bind our event handlers:
@@ -107,6 +76,10 @@ class LogReaderTimelineGraph extends Component {
   		    return a.time - b.time;
 		});
 
+        const dateFormat = (time) => {
+            return moment(time).format('MM/DD ');
+        };
+
         return (
             <div id='timelineGraph' className='collapse'>
                 <BarChart width={600} height={200} data={sortedData}
@@ -127,13 +100,7 @@ class LogReaderTimelineGraph extends Component {
 
     _onChange() {
         this.setState({
-            nextpagenumber: LogStore.getNextPageNumber(),
-            pagesize: LogStore.getPageSize(),
-            moreurl: LogStore.getMoreUrl(),
-            startDate: LogStore.getStartDate(),
-            endDate: LogStore.getEndDate(),
-            itemcount: LogStore.getItemCount(),
-            totalcount: LogStore.getTotalCount()
+            logcountdata: LogStore.getHourlyLogData()
         });
     }
 }

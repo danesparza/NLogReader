@@ -29,6 +29,13 @@ class LogReaderActions {
     });
   }
 
+  receiveLogCounts(logCountData){
+    AppDispatcher.dispatch({
+        actionType: LogReaderConstants.RECEIVE_RAW_HOURLY_LOG_COUNTS,
+        logCountData: logCountData
+    });
+  }
+
 }
 
 module.exports = new LogReaderActions(AppDispatcher);

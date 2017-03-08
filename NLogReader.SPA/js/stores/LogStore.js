@@ -15,6 +15,7 @@ class LogStore extends Store {
         this.totalCount = 0;
         this.pageSize = 0;
         this.lastPageAdded = 0;
+        this.logcountdata = Immutable.List();
 
         this.startDate = {};
         this.endDate = {};
@@ -46,8 +47,16 @@ class LogStore extends Store {
         this.endDate = enddate;
     }
 
+    setHourlyCountData(logcountdata){
+        this.logcountdata = Immutable.List(logcountdata);
+    }
+
     getLogData() {
         return this.logdata.toJS();
+    }
+
+    getHourlyLogData() {
+        return this.logcountdata.toJS();
     }
 
     getItemCount() {
@@ -89,7 +98,10 @@ class LogStore extends Store {
                 this.mergeLogData(action.logData, action.totalCount, action.pagesize, action.pagenumber, action.startdate, action.enddate);
                 this.__emitChange();
                 break;
-
+            case LogReaderConstants.RECEIVE_RAW_HOURLY_LOG_COUNTS:
+                this.setHourlyCountData(action.logCountData);
+                this.__emitChange();
+                break;
             default:
             // no op
         }

@@ -56,6 +56,29 @@ module.exports = {
         console.timeEnd("Fetched more log data");
         nprogress.done();
     });
+  },
+
+  getHourlyCounts: function(params) {
+
+    var url = params.baseurl + "/api/v1/logs/logcountsbyhour";
+    console.time("Fetched log counts");
+
+    $.ajax( {
+      type: "GET",
+      url: url} 
+    )
+    .done(function(response) {
+        //  Call the action to receive the data:
+        LogReaderActions.receiveLogCounts(response.Data);
+    }.bind(this))
+    .fail(function() {
+        //  Something bad happened
+        console.warn("There was a problem getting log counts");
+    })
+    .always(function(){
+        console.timeEnd("Fetched log counts");
+    });
+
   }
 
 };
