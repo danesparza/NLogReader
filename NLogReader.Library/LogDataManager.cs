@@ -140,10 +140,11 @@ namespace NLogReader.Library
             //  Get the list of applications and each of their log counts:
             retval = (from logitem in _context.system_logging
                       where logitem.entered_date > nowMinusXDays
-                      group logitem by new {Month = logitem.entered_date.Value.Month, Day = logitem.entered_date.Value.Day, Hour = logitem.entered_date.Value.Hour} into grp
+                      group logitem by new {Year = logitem.entered_date.Value.Year, Month = logitem.entered_date.Value.Month, Day = logitem.entered_date.Value.Day, Hour = logitem.entered_date.Value.Hour} into grp
                       orderby grp.Key.Month, grp.Key.Day, grp.Key.Hour
                       select new LogCountByHourResponse
                       {
+                          Year = grp.Key.Year,
                           Month = grp.Key.Month,
                           Day = grp.Key.Day,
                           Hour = grp.Key.Hour,
