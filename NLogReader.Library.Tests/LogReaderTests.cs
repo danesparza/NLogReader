@@ -80,9 +80,9 @@ namespace NLogReader.Library.Tests
 
             //  Assert
             Assert.IsNotNull(results);                      /* Result object should not be null */
-            Assert.AreNotEqual<int>(0, results.Count);      /* We should have some results */
-            Assert.AreNotEqual<int>(0, results.Data.Count); /* Serously.  We should have some results */
-            Assert.AreNotEqual<int>(0, results.TotalCount); /* No Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.Count);      /* We should have some results */
+            Assert.AreNotEqual(0, results.Data.Count); /* Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.TotalCount); /* No Serously.  We should have some results */
             Assert.IsFalse(results.Count < 20);             /* We should have more than 20 results */
             Assert.IsTrue(results.Data.ToList()[0].entered_date > results.Data.ToList()[19].entered_date, "Log items are not returned in descending order of entered date/time");
         }
@@ -104,14 +104,14 @@ namespace NLogReader.Library.Tests
 
             //  Assert
             Assert.IsNotNull(results);                      /* Result object should not be null */
-            Assert.AreNotEqual<int>(0, results.Count);      /* We should have some results */
-            Assert.AreNotEqual<int>(0, results.Data.Count); /* Serously.  We should have some results */
-            Assert.AreNotEqual<int>(0, results.TotalCount); /* No Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.Count);      /* We should have some results */
+            Assert.AreNotEqual(0, results.Data.Count); /* Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.TotalCount); /* No Serously.  We should have some results */
 
             //  All of the items should have the selected application name
             foreach(var item in results.Data)
             {
-                Assert.AreEqual<string>(request.ApplicationName, item.log_application);
+                Assert.AreEqual(request.ApplicationName, item.log_application);
             }
         }
 
@@ -133,9 +133,9 @@ namespace NLogReader.Library.Tests
 
             //  Assert
             Assert.IsNotNull(results);                      /* Result object should not be null */
-            Assert.AreNotEqual<int>(0, results.Count);      /* We should have some results */
-            Assert.AreNotEqual<int>(0, results.Data.Count); /* Serously.  We should have some results */
-            Assert.AreNotEqual<int>(0, results.TotalCount); /* No Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.Count);      /* We should have some results */
+            Assert.AreNotEqual(0, results.Data.Count); /* Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.TotalCount); /* No Serously.  We should have some results */
 
             //  None of the items should be earlier than the start date
             foreach(var item in results.Data)
@@ -161,14 +161,14 @@ namespace NLogReader.Library.Tests
 
             //  Assert
             Assert.IsNotNull(results);                      /* Result object should not be null */
-            Assert.AreNotEqual<int>(0, results.Count);      /* We should have some results */
-            Assert.AreNotEqual<int>(0, results.Data.Count); /* Serously.  We should have some results */
-            Assert.AreNotEqual<int>(0, results.TotalCount); /* No Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.Count);      /* We should have some results */
+            Assert.AreNotEqual(0, results.Data.Count); /* Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.TotalCount); /* No Serously.  We should have some results */
 
             //  All of the items should have the selected machine name
             foreach(var item in results.Data)
             {
-                Assert.AreEqual<string>(request.MachineName, item.log_machine_name);
+                Assert.AreEqual(request.MachineName, item.log_machine_name);
             }
         }
 
@@ -190,9 +190,9 @@ namespace NLogReader.Library.Tests
 
             //  Assert
             Assert.IsNotNull(results);                      /* Result object should not be null */
-            Assert.AreNotEqual<int>(0, results.Count);      /* We should have some results */
-            Assert.AreNotEqual<int>(0, results.Data.Count); /* Serously.  We should have some results */
-            Assert.AreNotEqual<int>(0, results.TotalCount); /* No Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.Count);      /* We should have some results */
+            Assert.AreNotEqual(0, results.Data.Count); /* Serously.  We should have some results */
+            Assert.AreNotEqual(0, results.TotalCount); /* No Serously.  We should have some results */
             Assert.AreEqual<int>(request.PageSize, results.Count);
             Assert.AreEqual<int>(request.PageSize, results.Data.Count);
         }
@@ -217,7 +217,7 @@ namespace NLogReader.Library.Tests
 
             //  Assert
             Assert.IsNotNull(initialResults);
-            Assert.AreNotEqual<int>(0, initialResults.Count);
+            Assert.AreNotEqual(0, initialResults.Count);
 
             //  Make sure that paging through the results yields the same
             //  number of results as making one big request:
