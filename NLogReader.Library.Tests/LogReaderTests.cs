@@ -32,28 +32,28 @@ namespace NLogReader.Library.Tests
             //  Our test data
             data = new List<system_logging>
             {
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-1), log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-2), log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-3), log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-4), log_application = "Other Service", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-5), log_application = "Other Service", log_machine_name = "APP01", log_level = "ERROR", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-6), log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-7), log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-8), log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-9), log_application = "Application web", log_level = "WARN", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-10), log_application = "Application service", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-11), log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-12), log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-13), log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-14), log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-15), log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-16), log_application = "Other Service", log_machine_name = "APP01", log_level = "ERROR", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-17), log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-18), log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-19), log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-20), log_application = "Application web", log_level = "WARN", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-21), log_application = "Application service", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
-                new system_logging { entered_date = DateTime.Now.AddMinutes(-22), log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_machine_name = "APP01", log_level = "ERROR", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Application web", log_level = "WARN", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Application service", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_machine_name = "APP01", log_level = "ERROR", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now, log_application = "Other Service", log_machine_name = "APP01", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now.AddHours(-1), log_application = "Application web", log_level = "WARN", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
+                new system_logging { entered_date = DateTime.Now.AddHours(-1), log_application = "Application service", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "" },
+                new system_logging { entered_date = DateTime.Now.AddHours(-1), log_application = "Application web", log_level = "DEBUG", log_call_site = "Unit test", aspnet_sessionid = "UnitTEST1234567890" },
             }.AsQueryable();
 
             //  Wire up the DBSet operations
@@ -255,19 +255,57 @@ namespace NLogReader.Library.Tests
         }
 
         [TestMethod]
-        public void GetAllLogCounts_IsSuccessful()
+        public void GetApplicationLogCounts_IsSuccessful()
         {
             //  Arrange
             LogDataManager manager = new LogDataManager(mockContext.Object);
             int expectedNumberOfApplications = 3;
 
             //  Act
-            List<LogCountResponse> results = manager.GetAllLogCounts();
+            List<LogCountByApplicationResponse> results = manager.GetApplicationLogCounts();
 
             //  Assert
             Assert.IsNotNull(results);
             Assert.AreEqual(expectedNumberOfApplications, results.Count());
             Assert.AreEqual(0, results[0].DebugCount);
         }
+
+        [TestMethod]
+        public void GetHourlyLogCounts_IsSuccessful()
+        {
+            //  Arrange
+            LogDataManager manager = new LogDataManager(mockContext.Object);
+            int expectedNumberOfHours = 2;
+
+            //  Act
+            List<LogCountByHourResponse> results = manager.GetHourlyLogCounts();
+
+            /* Counts should look like this:
+
+            Previous hour
+                Trace: 0
+                Debug: 2
+                Warn: 1
+                Error: 0
+                Fatal: 0
+                
+            Current hour
+                Trace: 0
+                Debug: 16 
+                Warn: 1
+                Error: 2
+                Fatal: 0
+
+             */
+
+            //  Assert
+            Assert.IsNotNull(results);
+            Assert.AreEqual(expectedNumberOfHours, results.Count());    //  Should have grouped appropriately
+            Assert.AreEqual(2, results[0].DebugCount);                  //  Previous hour debug count
+            Assert.AreEqual(16, results[1].DebugCount);                 //  Current hour debug count
+        }
+
+
+
     }
 }

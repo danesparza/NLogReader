@@ -1,6 +1,6 @@
 ﻿namespace NLogReader.Library
 {
-    public class LogCountResponse
+    public class LogCountByApplicationResponse
     {
         public string Application { get; set; }
 

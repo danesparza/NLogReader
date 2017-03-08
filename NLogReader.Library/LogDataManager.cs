@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NLogReader.Library.Data;
 
@@ -102,15 +103,15 @@ namespace NLogReader.Library
         /// Get log counts for all applications in the system
         /// </summary>
         /// <returns></returns>
-        public List<LogCountResponse> GetAllLogCounts()
+        public List<LogCountByApplicationResponse> GetApplicationLogCounts()
         {
-            List<LogCountResponse> retval = new List<LogCountResponse>();
+            List<LogCountByApplicationResponse> retval = new List<LogCountByApplicationResponse>();
 
             //  Get the list of applications and each of their log counts:
             retval = (from logitem in _context.system_logging
                       orderby logitem.log_application
                       group logitem by logitem.log_application into grp
-                      select new LogCountResponse
+                      select new LogCountByApplicationResponse
                       {
                           Application = grp.Key,
                           TotalCount = grp.Count(),
@@ -120,6 +121,38 @@ namespace NLogReader.Library
                           WarnCount = grp.Where(x => x.log_level == "Warn").Count(),
                           ErrorCount = grp.Where(x => x.log_level == "Error").Count(),
                           FatalCount = grp.Where(x => x.log_level == "Fatal").Count()
+                      }).ToList();
+
+            return retval;
+        }
+
+        /// <summary>
+        /// Get the hourly log counts for the specified number of days in the past
+        /// </summary>
+        /// <param name="daysToFetch">The number of days in the past to fetch data for</param>
+        /// <returns></returns>
+        public List<LogCountByHourResponse> GetHourlyLogCounts(int daysToFetch = 14)
+        {
+            List<LogCountByHourResponse> retval = new List<LogCountByHourResponse>();
+
+            DateTime nowMinusXDays = DateTime.Now.AddDays(-(daysToFetch));
+
+            //  Get the list of applications and each of their log counts:
+            retval = (from logitem in _context.system_logging
+                      where logitem.entered_date > nowMinusXDays
+                      group logitem by new {Month = logitem.entered_date.Value.Month, Day = logitem.entered_date.Value.Day, Hour = logitem.entered_date.Value.Hour} into grp
+                      orderby grp.Key.Month, grp.Key.Day, grp.Key.Hour
+                      select new LogCountByHourResponse
+                      {
+                          Month = grp.Key.Month,
+                          Day = grp.Key.Day,
+                          Hour = grp.Key.Hour,
+                          TraceCount = grp.Where(x => x.log_level.Equals("Trace", StringComparison.CurrentCultureIgnoreCase)).Count(),
+                          DebugCount = grp.Where(x => x.log_level.Equals("Debug", StringComparison.CurrentCultureIgnoreCase)).Count(),
+                          InfoCount = grp.Where(x => x.log_level.Equals("Info", StringComparison.CurrentCultureIgnoreCase)).Count(),
+                          WarnCount = grp.Where(x => x.log_level.Equals("Warn", StringComparison.CurrentCultureIgnoreCase)).Count(),
+                          ErrorCount = grp.Where(x => x.log_level.Equals("Error", StringComparison.CurrentCultureIgnoreCase)).Count(),
+                          FatalCount = grp.Where(x => x.log_level.Equals("Fatal", StringComparison.CurrentCultureIgnoreCase)).Count()
                       }).ToList();
 
             return retval;

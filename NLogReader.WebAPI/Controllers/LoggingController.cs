@@ -79,13 +79,24 @@ namespace NLogReader.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("logcounts")]
-        public List<LogCountResponse> GetAllLogResponses()
+        [Route("logcountsbyapp")]
+        public List<LogCountByApplicationResponse> GetCountsByApplication()
         {
             using(var db = new Application_LogsEntities())
             {
                 LogDataManager manager = new LogDataManager(db);
-                return manager.GetAllLogCounts();
+                return manager.GetApplicationLogCounts();
+            }
+        }
+
+        [HttpGet]
+        [Route("logcountsbyhour")]
+        public List<LogCountByHourResponse> GetCountsByHour()
+        {
+            using(var db = new Application_LogsEntities())
+            {
+                LogDataManager manager = new LogDataManager(db);
+                return manager.GetHourlyLogCounts();
             }
         }
     }

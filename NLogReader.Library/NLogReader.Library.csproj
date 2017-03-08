@@ -69,7 +69,8 @@
     <Compile Include="Data\system_logging.cs">
       <DependentUpon>Logs.tt</DependentUpon>
     </Compile>
-    <Compile Include="LogCountResponse.cs" />
+    <Compile Include="LogCountByApplicationResponse.cs" />
+    <Compile Include="LogCountByHourResponse.cs" />
     <Compile Include="LogDataManager.cs" />
     <Compile Include="LogFetchRequest.cs" />
     <Compile Include="LogFetchResponse.cs" />
