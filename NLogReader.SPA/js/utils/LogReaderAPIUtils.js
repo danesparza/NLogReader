@@ -69,7 +69,7 @@ module.exports = {
     )
     .done(function(response) {
         //  Call the action to receive the data:
-        LogReaderActions.receiveLogCounts(response.Data);
+        LogReaderActions.receiveLogCounts(response);
     }.bind(this))
     .fail(function() {
         //  Something bad happened

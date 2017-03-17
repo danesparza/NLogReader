@@ -56,7 +56,27 @@ class LogStore extends Store {
     }
 
     getHourlyLogData() {
-        return this.logcountdata.toJS();
+        var countItems = this.logcountdata.toJS();
+        
+        countItems = countItems.map(function(v) {
+            var countItem = {
+                time: new Date(v.Year,v.Month-1,v.Day, v.Hour, v.Minute, 0).getTime(),
+                Year: v.Year,
+                Month: v.Month,
+                Day: v.Day,
+                Hour: v.Hour,
+                Minute: v.Minute,
+                TraceCount: v.TraceCount,
+                DebugCount: v.DebugCount,
+                InfoCount: v.InfoCount,
+                WarnCount: v.WarnCount,
+                ErrorCount: v.ErrorCount,
+                FatalCount: v.FatalCount
+            };
+            return countItem;
+        });
+
+        return countItems;
     }
 
     getItemCount() {
