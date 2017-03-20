@@ -1,4 +1,5 @@
 import {Component} from 'react';
+import Dimensions from 'react-dimensions';
 
 //  The components
 import LogReaderToolbar from './LogReaderToolbar.react';
@@ -74,7 +75,7 @@ class LogReaderApp extends Component {
                   </div>
                 </div>
 
-                <LogReaderResults />
+                <LogReaderResults {...this.props} />
               </div>
           </div>
 
@@ -107,4 +108,4 @@ class LogReaderApp extends Component {
 
 }
 
-export default LogReaderApp
+export default Dimensions()(LogReaderApp) // Enhanced component

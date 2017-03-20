@@ -1,6 +1,6 @@
 import {Component} from 'react';
 import {BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
-import moment from 'moment'
+import moment from 'moment';
 
 //  The stores
 import LogStore from '../stores/LogStore';
@@ -45,7 +45,7 @@ class LogReaderTimelineGraph extends Component {
 
         return (
             <div id='timelineGraph' className='collapse'>
-                <BarChart width={600} height={200} data={sortedData}
+                <BarChart width={this.props.containerWidth - 50} height={200} data={sortedData}
                     margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                     <XAxis dataKey="time" tickFormatter={dateFormat}/>
                     <YAxis/>
@@ -59,6 +59,7 @@ class LogReaderTimelineGraph extends Component {
                 </BarChart>
             </div>
         );
+
     }
 
     _onChange() {

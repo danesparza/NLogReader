@@ -57,7 +57,7 @@ class LogReaderResultsHeader extends Component {
         <div id='results-header'>
           Showing <b>{this.state.itemcount}</b> log items out of <b>{this.state.totalcount}</b> <button type='button' className='btn btn-success btn-xs' onClick={this._moreClick}>Show more</button> <button className="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#timelineGraph" aria-expanded="false" aria-controls="timelineGraph">Timeline graph</button>
           
-          <LogReaderTimelineGraph />
+          <LogReaderTimelineGraph {...this.props} />
         </div>
       );  
     }
@@ -67,7 +67,7 @@ class LogReaderResultsHeader extends Component {
         <div id='results-header'>
           Showing <b>{this.state.itemcount}</b> log items <button className="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#timelineGraph" aria-expanded="false" aria-controls="timelineGraph">Timeline graph</button>
 
-          <LogReaderTimelineGraph />
+          <LogReaderTimelineGraph {...this.props} />
         </div>
       );   
     }

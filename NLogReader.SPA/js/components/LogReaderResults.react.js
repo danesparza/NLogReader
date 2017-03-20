@@ -76,7 +76,7 @@ class LogReaderResults extends Component {
   	return (
       <div>
 
-        <LogReaderResultsHeader />
+        <LogReaderResultsHeader {...this.props} />
 
         <div>
             <DataGrid
