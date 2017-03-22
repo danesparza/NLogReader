@@ -23,7 +23,8 @@ class LogReaderResultsHeader extends Component {
       startDate: LogStore.getStartDate(),
       endDate: LogStore.getEndDate(),
       itemcount: LogStore.getItemCount(),
-      totalcount: LogStore.getTotalCount()
+      totalcount: LogStore.getTotalCount(),
+      hourlydata: LogStore.getHourlyLogData()
     };
 
     //  Bind our event handlers:
@@ -50,12 +51,19 @@ class LogReaderResultsHeader extends Component {
     if(this.state.itemcount == 0)
       return null;
 
+    //  Only show the button if we have hourly counts data
+    let timelinebutton = null;
+    if (this.state.hourlydata.length > 0) {
+      timelinebutton = <button className="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#timelineGraph" aria-expanded="false" aria-controls="timelineGraph">Timeline graph</button>;
+    }
+
     //  If we have more data to display, clearly indicate that (and show the button)
     if(this.state.totalcount > this.state.itemcount)
     {
       return (
         <div id='results-header'>
-          Showing <b>{this.state.itemcount}</b> log items out of <b>{this.state.totalcount}</b> <button type='button' className='btn btn-success btn-xs' onClick={this._moreClick}>Show more</button> <button className="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#timelineGraph" aria-expanded="false" aria-controls="timelineGraph">Timeline graph</button>
+          Showing <b>{this.state.itemcount}</b> log items out of <b>{this.state.totalcount}</b> <button type='button' className='btn btn-success btn-xs' onClick={this._moreClick}>Show more</button> 
+          &nbsp;{timelinebutton}
           
           <LogReaderTimelineGraph {...this.props} />
         </div>
@@ -65,7 +73,8 @@ class LogReaderResultsHeader extends Component {
     {
        return (
         <div id='results-header'>
-          Showing <b>{this.state.itemcount}</b> log items <button className="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#timelineGraph" aria-expanded="false" aria-controls="timelineGraph">Timeline graph</button>
+          Showing <b>{this.state.itemcount}</b> log items 
+          &nbsp;{timelinebutton}
 
           <LogReaderTimelineGraph {...this.props} />
         </div>
@@ -100,7 +109,8 @@ class LogReaderResultsHeader extends Component {
       startDate: LogStore.getStartDate(),
       endDate: LogStore.getEndDate(),
       itemcount: LogStore.getItemCount(),
-      totalcount: LogStore.getTotalCount()
+      totalcount: LogStore.getTotalCount(),
+      hourlydata: LogStore.getHourlyLogData()
     });
   }
 

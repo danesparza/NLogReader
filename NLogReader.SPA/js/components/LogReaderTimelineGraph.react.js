@@ -29,7 +29,7 @@ class LogReaderTimelineGraph extends Component {
     }
 
     render() {
-
+        
         const sortedData = this.state.logcountdata.sort(function(a, b) {
   		    return a.time - b.time;
 		});
@@ -54,8 +54,11 @@ class LogReaderTimelineGraph extends Component {
                     <Legend verticalAlign="top" wrapperStyle={{lineHeight: '40px'}}/>
                     <ReferenceLine y={0} stroke='#000'/>
                     <Brush dataKey='time' height={30} stroke="#8884d8" tickFormatter={dateFormat}/>
-                    <Bar dataKey="ErrorCount" fill="#C70039" name="Error" />
-                    <Bar dataKey="DebugCount" fill="#337DFF" name="Debug"/>
+                    <Bar dataKey="FatalCount" fill="#85144b" name="Fatal" />
+                    <Bar dataKey="ErrorCount" fill="#ff4136" name="Error" />
+                    <Bar dataKey="WarnCount" fill="#ff851b" name="Warn"/>
+                    <Bar dataKey="InfoCount" fill="#0074d9" name="Info"/>
+                    <Bar dataKey="DebugCount" fill="#111" name="Debug"/>
                 </BarChart>
             </div>
         );

@@ -74,6 +74,7 @@ module.exports = {
     .fail(function() {
         //  Something bad happened
         console.warn("There was a problem getting log counts");
+        LogReaderActions.resetLogCounts();
     })
     .always(function(){
         console.timeEnd("Fetched log counts");

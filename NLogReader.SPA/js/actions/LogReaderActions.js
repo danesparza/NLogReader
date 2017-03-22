@@ -36,6 +36,13 @@ class LogReaderActions {
     });
   }
 
+  resetLogCounts(){
+    AppDispatcher.dispatch({
+        actionType: LogReaderConstants.RECEIVE_RAW_HOURLY_LOG_COUNTS,
+        logCountData: null
+    });
+  }
+
 }
 
 module.exports = new LogReaderActions(AppDispatcher);
